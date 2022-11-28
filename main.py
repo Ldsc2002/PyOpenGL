@@ -48,16 +48,16 @@ while running:
     if keys[pygame.K_d]:
         R.rotateY()
 
-    if keys[pygame.K_r]:
-        if selectedShader == len(shaderOptions) - 1:
-            selectedShader = 0
-        else: 
-            selectedShader += 1
+    for event in pygame.event.get():
+        if event.type == pygame.KEYDOWN and event.key == pygame.K_r:
+            if selectedShader == len(shaderOptions) - 1:
+                selectedShader = 0
+            else: 
+                selectedShader += 1
 
-        R.setShaders(shaderOptions[selectedShader].vertexShader, shaderOptions[selectedShader].fragmentShader)
+            R.setShaders(shaderOptions[selectedShader].vertexShader, shaderOptions[selectedShader].fragmentShader)
 
-    for ev in pygame.event.get():
-        if ev.type == pygame.QUIT:
+        if event.type == pygame.QUIT:
             running = False
 
     R.render()
