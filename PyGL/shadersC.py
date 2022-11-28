@@ -26,6 +26,10 @@ in vec3 miColor;
 
 void main()
 {
-    fragColor = vec4(miColor, 1);
+    float newColX = mod(12345.4321 * miColor.x, 1);
+    float newColY = mod(12345.4321 * miColor.y, 1);
+    float newColZ = mod(12345.4321 * miColor.z, 1);
+
+    fragColor = vec4(newColX, newColY, newColZ, 1);
 }
 """

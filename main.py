@@ -54,6 +54,8 @@ while running:
         else: 
             selectedShader += 1
 
+        R.setShaders(shaderOptions[selectedShader].vertexShader, shaderOptions[selectedShader].fragmentShader)
+
     for ev in pygame.event.get():
         if ev.type == pygame.QUIT:
             running = False

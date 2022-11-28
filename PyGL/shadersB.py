@@ -26,6 +26,6 @@ in vec3 miColor;
 
 void main()
 {
-    fragColor = vec4(miColor, 1);
+    fragColor = vec4(1, miColor.x, 1, 1);
 }
 """
