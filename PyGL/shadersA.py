@@ -1,4 +1,3 @@
-
 vertexShader = """
 #version 440
 

@@ -1,16 +1,20 @@
 import pygame
 from pygame import *
 from PyGL.gl import Renderer
-import PyGL.shaders as shaders
+import PyGL.shadersA as shadersA
+import PyGL.shadersB as shadersB
+import PyGL.shadersC as shadersC
 
 deltaTime = 0.0
+shaderOptions = [shadersA, shadersB, shadersC]
+selectedShader = 0
 
 pygame.init()
 clock = pygame.time.Clock()
 screen = pygame.display.set_mode((960, 540), DOUBLEBUF | OPENGL)
 
 R = Renderer(screen)
-R.setShaders(shaders.vertexShader, shaders.fragmentShader)
+R.setShaders(shaderOptions[selectedShader].vertexShader, shaderOptions[selectedShader].fragmentShader)
 R.createObjects()
 
 cubeX = 0
@@ -43,6 +47,12 @@ while running:
         R.rotateY(True)
     if keys[pygame.K_d]:
         R.rotateY()
+
+    if keys[pygame.K_r]:
+        if selectedShader == len(shaderOptions) - 1:
+            selectedShader = 0
+        else: 
+            selectedShader += 1
 
     for ev in pygame.event.get():
         if ev.type == pygame.QUIT:
